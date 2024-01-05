@@ -155,17 +155,16 @@ const CallsDetails = ({ id }) => {
                   )}
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="col-span-3 lg:col-span-2  flex items-center">
-            <OptionIcon />
-            <p className="text-sm font-extrabold text-gray-400 mx-auto lg:mx-0">
-              {timeStamp?.time}
-            </p>
-            <div className="absolute right-[-0.13rem] w-6 shadow-lg border-2 border-gray-200 rounded-s-sm">
-              <p className="text-[0.50rem] font-bold text-gray-400 ml-1">
-                {timeStamp?.format}
-              </p>
+              <div className="flex">
+                <p className="text-sm font-extrabold text-gray-400">
+                  {timeStamp?.time}
+                </p>
+                <div className="w-6 shadow-lg border-2 border-gray-200 rounded-s-sm">
+                  <p className="text-[0.50rem] font-bold text-gray-400 ml-1 pt-[2px]">
+                    {timeStamp?.format}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

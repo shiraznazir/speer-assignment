@@ -3,9 +3,10 @@ import Calls from "./common/Calls";
 import { UseToggleCallsContext } from "../context/ToggleCallsContext";
 import { baseUrl } from "../constants";
 import CallsDetails from "./CallsDetails";
+import Shimmer from "./common/Shimmer";
 
 const Body = () => {
-  const [callsData, setCallsData] = useState();
+  const [callsData, setCallsData] = useState(null);
   const { activity } = UseToggleCallsContext();
   const [callDetails, setCallDetails] = useState(null);
   const [callById, setCallById] = useState("");
@@ -102,14 +103,18 @@ const Body = () => {
         </div>
       )}
       {!callById ? (
-        callsData?.map((item) => (
-          <Calls
-            key={item?.id}
-            item={item}
-            handleArchive={handleArchive}
-            handleCallDetails={handleCallDetails}
-          />
-        ))
+        callsData ? (
+          callsData?.map((item) => (
+            <Calls
+              key={item?.id}
+              item={item}
+              handleArchive={handleArchive}
+              handleCallDetails={handleCallDetails}
+            />
+          ))
+        ) : (
+          <Shimmer />
+        )
       ) : (
         <CallsDetails id={callById} />
       )}
